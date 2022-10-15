@@ -8,11 +8,15 @@ using Xamarin.Forms;
 
 namespace Cashier
 {
-    public partial class MainPage : ContentPage
+    [DesignTimeVisible(false)]
+    public partial class MainPage : MasterDetailPage
     {
         public MainPage()
         {
             InitializeComponent();
+            this.Master = new Master();
+            this.Detail = new NavigationPage(new Detail());
+            App.masterDetail = this;
         }
     }
 }

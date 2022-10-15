@@ -6,6 +6,7 @@ namespace Cashier
 {
     public partial class App : Application
     {
+        public static MasterDetailPage masterDetail { get; set; }
         public App()
         {
             InitializeComponent();
