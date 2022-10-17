@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Cashier.Data;
+using System;
+using System.IO;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -6,6 +8,7 @@ namespace Cashier
 {
     public partial class App : Application
     {
+        static SQLiteHelper db;
         public static MasterDetailPage masterDetail { get; set; }
         public App()
         {
@@ -14,6 +17,17 @@ namespace Cashier
             MainPage = new MainPage();
         }
 
+        public static SQLiteHelper SQLiteDB
+        {
+            get
+            {
+                if(db == null)
+                {
+                    db = new SQLiteHelper(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "cashier.db3"));
+                }
+                return db;
+            }
+        }
         protected override void OnStart()
         {
         }
