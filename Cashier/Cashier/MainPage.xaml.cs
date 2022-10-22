@@ -17,6 +17,7 @@ namespace Cashier
             this.Master = new Master();
             this.Detail = new NavigationPage(new Detail());
             App.masterDetail = this;
+            
         }
     }
 }

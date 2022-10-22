@@ -4,9 +4,10 @@
              x:Class="Cashier.Master"
              Title="Master">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout BackgroundColor="White">
             <Button Text="Caterogorias" x:Name="btnCategorias" BackgroundColor="White" Clicked="btnCategorias_Clicked" />
-            <Button Text="Caterogorias" x:Name="btnProductos" BackgroundColor="White" Clicked="btnProductos_Clicked" />           
+            <Button Text="Empresas" x:Name="btnEmpresas" BackgroundColor="White" Clicked="btnEmpresas_Clicked" />           
+            <Button Text="Proveedores" x:Name="btnProveedores" BackgroundColor="White" Clicked="btnProveedores_Clicked" />           
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

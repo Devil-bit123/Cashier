@@ -1,64 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Cashier.Views.categoria">
+             x:Class="Cashier.Views.categoriaView"
+             Title="Categoria">
     <ContentPage.Content>
-        <StackLayout Margin="10">
-            <Label x:Name="txtIdCat" IsVisible="false"/>           
-            <Entry x:Name="txtNomCat" Placeholder="Nombre"/>
-            <Entry x:Name="txtDesCat" Placeholder="Descripcion"/>
-            <Picker x:Name="PickEstadoCAt" Title="Seleccione un estado">
-                <Picker.Items>
-                    <x:String>Activado</x:String>
-                    <x:String>Desactivado</x:String>
-                </Picker.Items>
-            </Picker>
-            <StackLayout Orientation="Horizontal">
-                <Button x:Name="btnCrear" Text="Crear" Clicked="btnCrear_Clicked"/>
-                <Button x:Name="btnEditar" Text="Editar" Clicked="btnEditar_Clicked" IsVisible="false"/>                
-                <Button Text="Cancelar"/>
-            </StackLayout>
-
-            <Label Text="Cateogiras Activas" FontSize="Title"/>
-            
-            <CollectionView x:Name="collVWcatACTV" SelectionMode="Single" SelectionChanged="collVWcat_SelectionChanged">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>                        
-                        <Grid>                            
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
-                                                   
-                            <Label Text="{Binding nomCat}" Grid.Row="0" Grid.Column="0"/>
-                            <Label Text="{Binding descCat}" Grid.Row="0" Grid.Column="1"/>
-                            <Label Text="{Binding estadoCat}" Grid.Row="0" Grid.Column="2"/>
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-            
-            <Label Text="Cateogiras Inactivas" FontSize="Title"/>
-            
-            <CollectionView x:Name="collVWcatDactv" SelectionMode="Single" SelectionChanged="collVWcatDactv_SelectionChanged">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
-                            
-                            <Label Text="{Binding nomCat}" Grid.Row="0" Grid.Column="0"/>
-                            <Label Text="{Binding descCat}" Grid.Row="0" Grid.Column="1"/>
-                            <Label Text="{Binding estadoCat}" Grid.Row="0" Grid.Column="2"/>
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-
+        <StackLayout>
+            <Label Text="Welcome to Xamarin.Forms!"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

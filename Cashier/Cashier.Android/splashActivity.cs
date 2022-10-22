@@ -23,6 +23,8 @@ namespace Cashier.Droid
         {
             base.OnCreate(savedInstanceState);
             StartActivity(new Intent(Application.Context, typeof(MainActivity)));
+            string c = "#fb8c00";
+            Window.SetStatusBarColor(Android.Graphics.Color.ParseColor(c));
             // Create your application here
         }
     }

@@ -20,13 +20,25 @@ namespace Cashier
 
         private async void btnCategorias_Clicked(object sender, EventArgs e)
         {
+            Button btn = (Button)sender;
+          
             App.masterDetail.IsPresented = false;
-            await App.masterDetail.Detail.Navigation.PushAsync(new categoria());
+            await App.masterDetail.Detail.Navigation.PushAsync(new categoriaView());
+        }
+    
+
+        private async void btnEmpresas_Clicked(object sender, EventArgs e)
+        {
+            
+            App.masterDetail.IsPresented = false;
+            await App.masterDetail.Detail.Navigation.PushAsync(new empresaView());
         }
 
-        private async void btnProductos_Clicked(object sender, EventArgs e)
+        private async void btnProveedores_Clicked(object sender, EventArgs e)
         {
+           
             App.masterDetail.IsPresented = false;
+            await App.masterDetail.Detail.Navigation.PushAsync(new proveedorView());
         }
     }
 }

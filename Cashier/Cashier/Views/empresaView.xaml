@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Cashier.Views.empresaView"
+             Title="Empresas">
+    <ContentPage.Content>
+        <StackLayout Margin="10">
+            <Label x:Name="txtIdEmpresa" IsVisible="false"/>
+            <Entry x:Name="txtNombreEmpresa" Placeholder="Nombre de la Empresa"/>
+            <Entry x:Name="txtDireccionEmpresa" Placeholder="Direccion de la Empresa"/>
+            <Entry x:Name="txtTelfEmpresa" Placeholder="Telefono de la Empresa" Keyboard="Numeric" MaxLength="10"/>
+            <Picker Title="Selecciona el estado" ItemsSource="{StaticResource Estados}" x:Name="pickEstadoEmpresa" />
+            <StackLayout Orientation="Horizontal">
+                <Button x:Name="btnGuardar" Text="Guardar" Clicked="btnGuardar_Clicked" BackgroundColor="#fb8c00" TextColor="Black"/>
+                <Button x:Name="btnEditar" Text="Editar" Clicked="btnEditar_Clicked" IsVisible="False" BackgroundColor="#fb8c00" TextColor="Black"/>
+                <Button x:Name="btnCancelar" Text="Cancelar" Clicked="btnCancelar_Clicked" BackgroundColor="#fb8c00" TextColor="Black"/>                
+            </StackLayout>
+
+            <ScrollView>
+            <StackLayout Margin="10">
+                <Label Text="Empresas Activas" FontSize="Title" HorizontalOptions="Center" TextColor="Black"/>
+                <CollectionView x:Name="CVEmpAct" SelectionMode="Single" SelectionChanged="CVEmpAct_SelectionChanged" >
+                    <CollectionView.Header>
+                            <Grid BackgroundColor="#c25e00">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="Nombre" Grid.Row="0" Grid.Column="0" TextColor="Black" FontSize="Subtitle" FontAttributes="Bold"/>
+                            <Label Text="Direccion" Grid.Row="0" Grid.Column="1" TextColor="Black" FontSize="Subtitle" FontAttributes="Bold"/>
+                            <Label Text="Telefono" Grid.Row="0" Grid.Column="2" TextColor="Black" FontSize="Subtitle" FontAttributes="Bold"/>
+                            <Label Text="Estado" Grid.Row="0" Grid.Column="3" TextColor="Black" FontSize="Subtitle" FontAttributes="Bold"/>
+                            <Label Text="ID" Grid.Row="0" Grid.Column="4" TextColor="Black" FontSize="Subtitle" FontAttributes="Bold"/>
+                            </Grid>                       
+                    </CollectionView.Header>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>                                    
+                                    <ColumnDefinition Width="*"/>                                    
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding nomEmpresa}" Grid.Row="0" Grid.Column="0" TextColor="Black"/>
+                                <Label Text="{Binding dirEmpresa}" Grid.Row="0" Grid.Column="1" TextColor="Black"/>
+                                <Label Text="{Binding teflEmpresa}" Grid.Row="0" Grid.Column="2" TextColor="Black"/>
+                                <Label Text="{Binding estadoEmpresa}" Grid.Row="0" Grid.Column="3" TextColor="Black"/>
+                                <Label Text="{Binding idEmpresa}" Grid.Row="0" Grid.Column="4" TextColor="Black"/>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+            </ScrollView>
+            <ScrollView>
+            <StackLayout Margin="10">
+                <Label Text="Empresas Inactivas" FontSize="Title" HorizontalOptions="Center" TextColor="Black"/>
+                    <CollectionView x:Name="CVEmpIact" SelectionMode="Single" SelectionChanged="CVEmpIact_SelectionChanged">
+                    <CollectionView.Header>
+                            <Grid BackgroundColor="#c25e00">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Text="Nombre" Grid.Row="0" Grid.Column="0" TextColor="Black" FontSize="Subtitle" FontAttributes="Bold"/>
+                            <Label Text="Direccion" Grid.Row="0" Grid.Column="1" TextColor="Black" FontSize="Subtitle" FontAttributes="Bold"/>
+                            <Label Text="Telefono" Grid.Row="0" Grid.Column="2" TextColor="Black" FontSize="Subtitle" FontAttributes="Bold" />
+                            <Label Text="Estado" Grid.Row="0" Grid.Column="3" TextColor="Black" FontSize="Subtitle" FontAttributes="Bold"/>
+                            <Label Text="ID" Grid.Row="0" Grid.Column="4" TextColor="Black" FontSize="Subtitle" FontAttributes="Bold"/>
+                        </Grid>
+                    </CollectionView.Header>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding nomEmpresa}" Grid.Row="0" Grid.Column="0" TextColor="Black"/>
+                                <Label Text="{Binding dirEmpresa}" Grid.Row="0" Grid.Column="1" TextColor="Black"/>
+                                <Label Text="{Binding teflEmpresa}" Grid.Row="0" Grid.Column="2" TextColor="Black"/>
+                                <Label Text="{Binding estadoEmpresa}" Grid.Row="0" Grid.Column="3" TextColor="Black"/>
+                                <Label Text="{Binding idEmpresa}" Grid.Row="0" Grid.Column="3" TextColor="Black"/>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <x:Array x:Key="Estados" Type="{x:Type x:String}">
+                <x:String>Activo</x:String>
+                <x:String>Inactivo</x:String>               
+            </x:Array>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+</ContentPage>
