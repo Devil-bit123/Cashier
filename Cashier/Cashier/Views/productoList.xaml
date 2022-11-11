@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Cashier.Views.productoList">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Margin="10">
+                <Label Text="Productos Activos" FontSize="Title" />
+                <StackLayout>
+                <CollectionView x:Name="CVprodA" SelectionMode="Single" SelectionChanged="CVprodA_SelectionChanged" >
+                    <CollectionView.Header>
+                            <Grid BackgroundColor="#ffbd45">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Text="Nombre" Grid.Row="0" Grid.Column="0" FontAttributes="Bold" />
+                                <Label Text="Descripcion" Grid.Row="0" Grid.Column="1" FontAttributes="Bold"/>
+                                <Label Text="P. Venta" Grid.Row="0" Grid.Column="2" FontAttributes="Bold"/>
+                        </Grid>
+                    </CollectionView.Header>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding nomProducto}" Grid.Row="0" Grid.Column="0" />
+                                <Label Text="{Binding descProducto }" Grid.Row="0" Grid.Column="1" />
+                                <Label Text="{Binding preVentaProd, StringFormat=' {0:C} '}" Grid.Row="0" Grid.Column="2" />
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout Margin="10">
+                <Label Text="Productos Inactivos" FontSize="Title" />
+                <StackLayout>
+                    <CollectionView x:Name="CVprodI" SelectionMode="Single" SelectionChanged="CVprodI_SelectionChanged">
+                        <CollectionView.Header>
+                            <Grid BackgroundColor="#ffbd45">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="Nombre" Grid.Row="0" Grid.Column="0" FontAttributes="Bold" />
+                                <Label Text="Descripcion" Grid.Row="0" Grid.Column="1" FontAttributes="Bold"/>
+                                <Label Text="P. Venta" Grid.Row="0" Grid.Column="2" FontAttributes="Bold"/>
+                            </Grid>
+                        </CollectionView.Header>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="{Binding nomProducto}" Grid.Row="0" Grid.Column="0" />
+                                    <Label Text="{Binding descProducto }" Grid.Row="0" Grid.Column="1" />
+                                    <Label Text="{Binding preVentaProd, StringFormat=' {0:C} '}" Grid.Row="0" Grid.Column="2" />
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

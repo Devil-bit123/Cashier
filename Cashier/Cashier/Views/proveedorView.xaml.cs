@@ -18,7 +18,7 @@ namespace Cashier.Views
         {
             InitializeComponent();
             llenarPickerEmp();
-            llenarCVProvACct();
+            llenarCV();
         }
 
         #region funcionalidad
@@ -33,12 +33,17 @@ namespace Cashier.Views
 
         }
 
-        private async void llenarCVProvACct()
+        private async void llenarCV()
         {
-            var prov = await App.SQLiteDB.recuperarProveedorACTVAsync();            
-            if (prov != null)
+            var provA = await App.SQLiteDB.recuperarProveedorACTVAsync();
+            var provI= await App.SQLiteDB.recuperarProveedorDACTVAsync();
+            if (provA != null)
             {
-                CVProvAct.ItemsSource = prov;
+                CVProvAct.ItemsSource = provA;
+            }
+            if (provI != null)
+            {
+                CVProvInac.ItemsSource = provI;
             }
         }
 
@@ -78,6 +83,17 @@ namespace Cashier.Views
             return respuesta;
 
         }
+
+        private void VaciarTXT()
+        {
+            txtIdProveedor.Text = "";
+            txtNombreProveedor.Text = "";
+            txtApellidoProveedor.Text = "";
+            txtCedProveedor.Text = "";
+            txtTelfProveedor.Text = "";
+            pickEmpresa.SelectedIndex = -1;
+            pickEstadoProveedor.SelectedIndex = -1;
+        }
         #endregion
         private async void btnGuardar_Clicked(object sender, EventArgs e)
         {
@@ -94,7 +110,7 @@ namespace Cashier.Views
                 };
                 await App.SQLiteDB.crearProveedorAsync(prov);
                 await DisplayAlert("OK!","Proveedor creado","OK");
-                llenarCVProvACct();
+                llenarCV();
                 
             }
             else
@@ -102,10 +118,7 @@ namespace Cashier.Views
                 await DisplayAlert("ERROR!", "Debe llenar los campos", "OK");
             }
         }
-    
-        
-
-             
+       
         
 
         private async void btnEditar_Clicked(object sender, EventArgs e)
@@ -125,8 +138,10 @@ namespace Cashier.Views
                 await App.SQLiteDB.editarProveedoresAsync(prov);
                 await DisplayAlert("OK!", "Proveedor editado", "OK");
                 btnEditar.IsVisible = false;
+                btnBorrar.IsVisible = false;
                 btnGuardar.IsVisible = true;
-                llenarCVProvACct();
+                VaciarTXT();
+                llenarCV();
             }
             else
             {
@@ -136,7 +151,7 @@ namespace Cashier.Views
 
         private void btnCancelar_Clicked(object sender, EventArgs e)
         {
-
+            VaciarTXT();
         }
 
         private async void CVProvAct_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -144,6 +159,7 @@ namespace Cashier.Views
             var selectedProveedor = e.CurrentSelection.FirstOrDefault() as proveedor;
             btnGuardar.IsVisible = false;
             btnEditar.IsVisible = true;
+            btnBorrar.IsVisible = true;
             if (!string.IsNullOrEmpty(selectedProveedor.idProveedor.ToString()))
             {
                 var proveedor = await App.SQLiteDB.recuperarProveedorXidAsync(selectedProveedor.idProveedor);
@@ -153,14 +169,50 @@ namespace Cashier.Views
                     txtNombreProveedor.Text = proveedor.nomProveedor.ToString();
                     txtApellidoProveedor.Text = proveedor.apeProveedor.ToString();
                     txtCedProveedor.Text = proveedor.cedProveedor.ToString();
-                    txtTelfProveedor.Text = proveedor.telfProveedor.ToString();                    
+                    txtTelfProveedor.Text = proveedor.telfProveedor.ToString();
+                    pickEmpresa.SelectedItem = proveedor.idEmpresa;
+                    pickEstadoProveedor.SelectedItem = proveedor.estadoProveedor;
                 }
 
             }
         }
 
-        private void btnBorrar_Clicked(object sender, EventArgs e)
+        private async void btnBorrar_Clicked(object sender, EventArgs e)
         {
+            var prov = await App.SQLiteDB.recuperarProveedorXidAsync(Convert.ToInt32(txtIdProveedor.Text));
+            if (prov!=null)
+            {
+                await App.SQLiteDB.eliminiarProveedorAsync(prov);
+            }            
+            await DisplayAlert("OK!", "Proveedor eliminado", "OK");
+            btnEditar.IsVisible = false;
+            btnBorrar.IsVisible = false;
+            btnGuardar.IsVisible = true;
+            VaciarTXT();
+            llenarCV();
+        }
+
+        private async void CVProvInac_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selectedProveedor = e.CurrentSelection.FirstOrDefault() as proveedor;
+            btnGuardar.IsVisible = false;
+            btnEditar.IsVisible = true;
+            btnBorrar.IsVisible = true;
+            if (!string.IsNullOrEmpty(selectedProveedor.idProveedor.ToString()))
+            {
+                var proveedor = await App.SQLiteDB.recuperarProveedorXidAsync(selectedProveedor.idProveedor);
+                if (proveedor != null)
+                {
+                    txtIdProveedor.Text = proveedor.idProveedor.ToString();
+                    txtNombreProveedor.Text = proveedor.nomProveedor.ToString();
+                    txtApellidoProveedor.Text = proveedor.apeProveedor.ToString();
+                    txtCedProveedor.Text = proveedor.cedProveedor.ToString();
+                    txtTelfProveedor.Text = proveedor.telfProveedor.ToString();
+                    pickEmpresa.SelectedItem = proveedor.idEmpresa;
+                    pickEstadoProveedor.SelectedItem = proveedor.estadoProveedor;
+                }
+
+            }
 
         }
     }

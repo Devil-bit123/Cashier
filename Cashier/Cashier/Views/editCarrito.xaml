@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
+             x:Class="Cashier.Views.editCarrito">
+    <ContentPage.Content>
+        <StackLayout Margin="10">
+            <Label x:Name="lblIDProd" Text="{Binding idDet}"/>
+            <Label x:Name="lblNF" Text="{Binding numFac}"/>
+            <StackLayout>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>                        
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Nombre:" Grid.Row="0" Grid.Column="0"/>
+                    <Label x:Name="lblNom" Text="{Binding nomProducto}" Grid.Row="0" Grid.Column="1"/>
+                    <Label Text="PVP:" Grid.Row="1" Grid.Column="0"/>
+                    <Label x:Name="lblPVP" Text="{Binding preVentaProducto}" Grid.Row="1" Grid.Column="1"/>
+                    <Label Text="Cantidad:" Grid.Row="2" Grid.Column="0"/>
+                    <Label x:Name="lblCant" Text="" Grid.Row="2" Grid.Column="1"/>
+                    <Stepper x:Name="stpCant" Minimum="1" Maximum="{Binding cantidad}" Grid.Row="2" Grid.Column="2" ValueChanged="stpCant_ValueChanged"/>
+                    <Label  Text="Total:" Grid.Row="3" Grid.Column="0"/>
+                    <Label x:Name="lblTot" Text="$" Grid.Row="3" Grid.Column="1"/>
+                   
+                </Grid>          
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Total $: " FontSize="Title"/>
+                    <Label x:Name="lblTotal" Text="{Binding total}" FontSize="Title"/>
+                </StackLayout>
+            </StackLayout>
+            <Button x:Name="btnBack" Text="Back" Clicked="btnBack_Clicked" />
+            <Button x:Name="btnCobrar" Text="cobrar" Clicked="btnCobrar_Clicked"  />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

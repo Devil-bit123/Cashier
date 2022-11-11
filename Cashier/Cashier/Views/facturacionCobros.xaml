@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Cashier.Views.facturacionCobros"
+             Title="Cobro de Productos">
+    <ContentPage.Content>
+        <StackLayout Margin="10" Padding="5">           
+            
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Fecha: " FontSize="Subtitle"/>
+                <Label x:Name="lblFechaFac" FontSize="Subtitle" FontAttributes="Bold"/>
+            </StackLayout>           
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Factura N°" FontSize="Subtitle"/>
+                <Label x:Name="lblNumFac"  FontSize="Subtitle" FontAttributes="Bold"/>               
+            </StackLayout>     
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <Entry x:Name="txtBusquedaCli" Placeholder="Cedula del cliente" TextChanged="txtBusquedaCli_TextChanged" ClearButtonVisibility="WhileEditing"/>
+                <Switch x:Name="SwitchBusqueda" IsToggled="false" 
+                        OnColor="#c25e00"
+                        ThumbColor="#ffbd45"
+                        Toggled="SwitchBusqueda_Toggled" />
+                <Button x:Name="btnAddCli" Image="adduser.png" BackgroundColor="#ffbd45" TextColor="Black" CornerRadius="100" HorizontalOptions="Fill" VerticalOptions="Fill" Clicked="btnAddCli_Clicked"/>
+            </StackLayout>
+            <StackLayout x:Name="addCliPanel" IsVisible="false">
+                <Entry x:Name="txtNomCliente" Placeholder="Nombre del cliente"/>
+                <Entry x:Name="txtApeCliente" Placeholder="Apellido del cliente"/>
+                <Entry x:Name="txtCedCliente" Placeholder="Cedula del cliente" Keyboard="Numeric" MaxLength="10"/>
+                <Entry x:Name="txtDirCliente" Placeholder="Direccion del cliente"/>
+                <Entry x:Name="txTelfCliente" Placeholder="Telefono del cliente" Keyboard="Numeric" MaxLength="10"/>
+                <StackLayout Orientation="Horizontal">
+                <Button x:Name="BtncAcceptPannel" Image="checked.png" BackgroundColor="White" CornerRadius="100" HorizontalOptions="Fill" VerticalOptions="Fill" Clicked="BtncAcceptPannel_Clicked"/>
+                <Button x:Name="BtnnCancelPanel" Image="cancel.png" BackgroundColor="White" CornerRadius="100" HorizontalOptions="Fill" VerticalOptions="Fill" Clicked="BtnnCancelPanel_Clicked"/>
+                </StackLayout>              
+            </StackLayout>
+            <StackLayout x:Name="REsultadosPannel" Margin="10" Padding="5">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Nombre" Grid.Row="0" Grid.Column="0" FontAttributes="Bold"/>
+                    <Label x:Name="lblNomCli" Text="" Grid.Row="0" Grid.Column="1"/>
+                    <Label Text="Apellido" Grid.Row="1" Grid.Column="0" FontAttributes="Bold"/>
+                    <Label x:Name="lblApeCli" Text="" Grid.Row="1" Grid.Column="1"/>
+                    <Label Text="Cedula" Grid.Row="2" Grid.Column="0" FontAttributes="Bold"/>
+                    <Label x:Name="lblCedCli" Text="" Grid.Row="2" Grid.Column="1"/>
+                    <Label  Text="Direccion" Grid.Row="3" Grid.Column="0" FontAttributes="Bold"/>
+                    <Label x:Name="lblDirCli" Text="" Grid.Row="3" Grid.Column="1"/>
+                    <Label Text="Telefono" Grid.Row="4" Grid.Column="0" FontAttributes="Bold"/>
+                    <Label x:Name="lblteflCli" Text="" Grid.Row="4" Grid.Column="1"/>
+                </Grid>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" Margin="10" Padding="5">
+                <Button x:Name="BtnScanProd" Image="barcode.png" BackgroundColor="White" Clicked="BtnScanProd_Clicked" CornerRadius="20"/>               
+            </StackLayout>
+            <StackLayout>
+                <CollectionView x:Name="CVcarrito" SelectionMode="Single" SelectionChanged="CVcarrito_SelectionChanged">
+                    <CollectionView.Header>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>                           
+                            </Grid.ColumnDefinitions>
+                            <Label Text="Cantidad" Grid.Row="0" Grid.Column="0" />
+                            <Label Text="Nombre" Grid.Row="0" Grid.Column="1" />
+                            <Label Text="PVP" Grid.Row="0" Grid.Column="2"/>
+                            <Label Text="Total" Grid.Row="0" Grid.Column="3"/>                           
+                        </Grid>
+                    </CollectionView.Header>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding cantidad}" Grid.Row="0" Grid.Column="0" />
+                                <Label Text="{Binding nomProducto}" Grid.Row="0" Grid.Column="1" />
+                                <Label Text="{Binding preVentaProducto}" Grid.Row="0" Grid.Column="2"/>
+                                <Label Text="{Binding total}" Grid.Row="0" Grid.Column="3"/>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Total: $" FontSize="Title" FontAttributes="Bold"/>
+                <Label x:Name="lblTotal"  FontSize="Title" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Button x:Name="BtnCash"  Image="payperclick.png"  BackgroundColor="White" Clicked="BtnCash_Clicked"  CornerRadius="20" />
+                <Button x:Name="BtnCancelFac"  Image="cancel.png"  BackgroundColor="White" Clicked="BtnCancelFac_Clicked" CornerRadius="20" />
+                <Label x:Name="pppp"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

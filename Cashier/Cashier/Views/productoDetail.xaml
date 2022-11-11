@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
+             x:Class="Cashier.Views.productoDetail"
+             >
+    <ContentPage.Content>
+
+        <StackLayout Margin="10" VerticalOptions="Center" HorizontalOptions="Center">
+            <Button Image="cancel.png" x:Name="btnBack" Clicked="btnBack_Clicked" HorizontalOptions="End" BackgroundColor="White" />
+            <StackLayout Margin="10" Padding="2">
+                <StackLayout x:Name="DetailPannel" IsVisible="true">
+                    <Label x:Name="txtIdProd" IsVisible="true"/>
+                    
+                           
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image x:Name="DTImage" Source="{Binding imageProd}" Grid.Row="0" Grid.Column="0" Grid.RowSpan="4"  />
+                                    <Label Text="Nombre:" Grid.Row="0" Grid.Column="1" FontAttributes="Bold"/>
+                                    <Label x:Name="lblNomProd" Text="{Binding nomProducto}" Grid.Row="0" Grid.Column="2"/>
+                                    <Label Text="Descripcion" Grid.Row="1" Grid.Column="1" FontAttributes="Bold"/>
+                                    <Label x:Name="lblDescProd" Text="{Binding descProducto}" Grid.Row="1" Grid.Column="2"/>
+                                    <Label Text="P. Compra:" Grid.Row="2" Grid.Column="1" FontAttributes="Bold"/>
+                                    <Label x:Name="lblPCompraProd" Text="{Binding preCompraProd, StringFormat='{0:C}'}" Grid.Row="2" Grid.Column="2"/>
+                                    <Label Text="P. Venta:" Grid.Row="3" Grid.Column="1" FontAttributes="Bold"/>
+                                    <Label x:Name="lblPVentaProd" Text="{Binding preVentaProd, StringFormat='{0:C}'}" Grid.Row="3" Grid.Column="2"/>
+                                    <Label Text="Existencias:" Grid.Row="4" Grid.Column="0" FontAttributes="Bold"/>
+                                    <Label x:Name="lblExisProd" Text="{Binding existProd}"  Grid.Row="4" Grid.Column="1" />
+                                    <Label Text="Categoria:" Grid.Row="5" Grid.Column="0" FontAttributes="Bold"/>
+                                    <Label x:Name="lblCatProd" Text="{Binding idCategoria}" Grid.Row="5" Grid.Column="1" />
+                                    <Label Text="Proveedor:" Grid.Row="6" Grid.Column="0" FontAttributes="Bold"/>
+                                    <Label x:Name="lblProvProd" Text="{Binding idProveedor}" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" />
+                                    <Label Text="Cod. Barras:" Grid.Row="7" Grid.Column="0" FontAttributes="Bold"/>
+                                    <Label x:Name="lblNBcodProd" Text="{Binding barCodeProd}" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" />
+                                    <Label Text="Estado:" Grid.Row="8" Grid.Column="0" FontAttributes="Bold"/>
+                                    <Label x:Name="lblEstadoProd" Text="{Binding estadoProd}" Grid.Row="8" Grid.Column="1" TextColor="Red" />
+                                </Grid>
+                          
+                      
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Start">
+                    <Button Image="edit64px.png" x:Name="btnEdit" Clicked="btnEdit_Clicked" BackgroundColor="White"  />
+                    <Button Image="delete64px.png" x:Name="btnDelete" Clicked="btnDelete_Clicked" BackgroundColor="White"/>
+                </StackLayout>
+                <StackLayout x:Name="EditPannel" IsVisible="false" IsEnabled="False">
+                    <ScrollView>
+                        <StackLayout>
+                            <Entry x:Name="txtNombreProd" Placeholder="Nombre del producto"/>
+                            <Entry x:Name="txtDescProd" Placeholder="Descripcion del producto"/>
+                            <Entry x:Name="txtPrecioCompraProd" Placeholder="Precio de  compra producto" Keyboard="Numeric"/>
+                            <Entry x:Name="txtPrecioVentaProd" Placeholder="Precio de venta producto" Keyboard="Numeric"/>
+                            <Entry x:Name="txtExistenciaProd" Placeholder="Existencias del producto" Keyboard="Numeric"/>
+                            <Picker Title="Selecciona la Categoria" x:Name="pickCategoriaProd" />
+                            <Picker Title="Selecciona el Proveedor" x:Name="pickProveedorProd" />
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Codigo de Barras: " FontSize="Subtitle"/>
+                                <Label x:Name="txtCodProd" Text="" FontSize="Title" TextColor="Black"/>
+                            </StackLayout>
+                            <StackLayout>
+                                <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                    <zxing:ZXingScannerView 
+                            x:Name="scanner"
+                                    IsScanning="true"
+                                    OnScanResult="ZXingScannerView_OnScanResult"/>
+                                    <zxing:ZXingDefaultOverlay               
+                                    x:Name="scannerOverlay"                                                       
+                                    BottomText="Posicione el codigo en la linea roja para escanear"/>
+                                </Grid>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Presione para tomar fotografia:"/>
+                                <Button x:Name="btnFoto" Image="photocamera.png" Clicked="btnFoto_Clicked" BackgroundColor="White" />
+                                <Button x:Name="btnNoFoto" Image="nocamera.png" Clicked="btnNoFoto_Clicked" BackgroundColor="White" />
+                            </StackLayout>
+                            <Label x:Name="txtIndFoto" Text="La foto se cargara atomaticamente despues de ser tomada, tenga paciencia."/>
+                            <Label x:Name="txtDirImagen" />
+                            <StackLayout>
+                                <Grid VerticalOptions="Fill">
+                                    <Image x:Name="image"/>
+                                </Grid>
+                            </StackLayout>
+                            <Picker Title="Selecciona el estado" ItemsSource="{StaticResource Estados}" x:Name="pickEstadoProducto"/>
+                            <StackLayout Orientation="Horizontal">
+                                <Button x:Name="btnGuardar" Image="add.png" Clicked="btnGuardar_Clicked" BackgroundColor="White" TextColor="Black" />
+                                <Button x:Name="btnCancelar"  Image="cancel.png" Clicked="btnCancelar_Clicked" BackgroundColor="White" TextColor="Black"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </ScrollView>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+
+    </ContentPage.Content>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <x:Array x:Key="Estados" Type="{x:Type x:String}">
+                <x:String>Activo</x:String>
+                <x:String>Inactivo</x:String>
+            </x:Array>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+</ContentPage>

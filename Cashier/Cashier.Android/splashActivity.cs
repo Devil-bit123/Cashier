@@ -13,7 +13,7 @@ using System.Text;
 namespace Cashier.Droid
 {
     
-    [Activity(Label = "Cashier", Icon = "@mipmap/icon",
+    [Activity(Label = "Cashier", Icon = "@mipmap/logoMain_adaptive_fore",
         Theme = "@style/splashTheme",
         MainLauncher = true,
         ConfigurationChanges = ConfigChanges.ScreenSize )]

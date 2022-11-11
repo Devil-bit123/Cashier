@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
+             x:Class="Cashier.Views.scanProductos"
+             Title="Scanner de productos">
+    <ContentPage.Content>
+        <StackLayout Margin="10">
+            <Label x:Name="lblNumFac" Text="{Binding numFac}" IsVisible="false" />
+            <Label x:Name="lblIdProd" IsVisible="false"/>
+            <StackLayout Orientation="Horizontal">
+                <Entry x:Name="txtBusquedaNomProd" Placeholder="Nombre del Producto" TextChanged="txtBusquedaNomProd_TextChanged"/>
+                <Switch x:Name="SwitchBusquedaProds" IsToggled="false" 
+                        OnColor="#c25e00"
+                        ThumbColor="#ffbd45"
+                        Toggled="SwitchBusquedaProds_Toggled" />
+            </StackLayout>
+            <Label x:Name="lblAvisoScan" Text="Cambie el switch para scannear el codigo del producto*" FontSize="Micro"/>
+            <StackLayout x:Name="ScanPannel" IsVisible="false">
+                <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                    <zxing:ZXingScannerView                                      
+                    IsScanning="true"
+                    OnScanResult="ZXingScannerView_OnScanResult"/>
+                    <zxing:ZXingDefaultOverlay               
+                x:Name="scannerOverlay"                                                       
+                BottomText="Posicione el codigo en la linea roja para escanear"/>
+                </Grid>
+            </StackLayout>
+            <StackLayout>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>                    </Grid.ColumnDefinitions>
+                    <Image x:Name="ImgProd" Grid.Column="0" Grid.Row="0" Grid.RowSpan="6"/>
+                    <Label Text="Nombre:" Grid.Row="0" Grid.Column="1" />
+                    <Label Text="Descripcion:" Grid.Row="1" Grid.Column="1" />
+                    <Label Text="Prec. Compra:" Grid.Row="2" Grid.Column="1"  />
+                    <Label Text="Prec. Venta:" Grid.Row="3" Grid.Column="1"  />
+                    <Label Text="Existencias:" Grid.Row="4" Grid.Column="1"  />
+                    <Label Text="Categoria:" Grid.Row="5" Grid.Column="1"  />
+                    <Label Text="Proveedor:" Grid.Row="6" Grid.Column="1"  />
+                    <Label Text="Codigo:" Grid.Row="7" Grid.Column="1"  />
+                    <Label x:Name="lblprodN" Text="0" Grid.Row="0" Grid.Column="2" />
+                    <Label x:Name="lblprodD" Text="1" Grid.Row="1" Grid.Column="2"/>
+                    <Label x:Name="lblprodPC" Text="2" Grid.Row="2" Grid.Column="2"/>
+                    <Label x:Name="lblprodPV" Text="3" Grid.Row="3" Grid.Column="2"/>
+                    <Label x:Name="lblprodEx" Text="4" Grid.Row="4" Grid.Column="2"/>
+                    <Label x:Name="lblprodCat" Text="5" Grid.Row="5" Grid.Column="2"/>
+                    <Label x:Name="lblprodProv" Text="6" Grid.Row="6" Grid.Column="2"/>                    
+                    <Label x:Name="lblprodCod" Text="7" Grid.Row="8" Grid.Column="2"/>                    
+                </Grid>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Cantidad: " FontSize="Title"/>                   
+                    <Label x:Name="lblCantidad" FontSize="Title"/>
+                    <Stepper x:Name="stpCantidad" Minimum="1" Maximum="100" Increment="1" ValueChanged="stpCantidad_ValueChanged" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Total $: " FontSize="Title"/>
+                    <Label x:Name="lblTotal" FontSize="Title"/>                    
+                </StackLayout>
+            </StackLayout>
+            <Button x:Name="btnBack" Text="Back" Clicked="btnBack_Clicked" />
+            <Button x:Name="btnCobrar" Text="cobrar" Clicked="btnCobrar_Clicked"  />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

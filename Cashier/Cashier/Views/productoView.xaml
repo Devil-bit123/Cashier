@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Cashier.Views.productoView"
+             xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
+             Title="Productos">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="10">
+                <Button Image="list.png" x:Name="btnList" Clicked="btnList_Clicked" BackgroundColor="White" HorizontalOptions="End" />
+                <StackLayout>
+                    <Label x:Name="txtIdProd" IsVisible="true"/>
+                    <Entry x:Name="txtNombreProd" Placeholder="Nombre del producto"/>
+                    <Entry x:Name="txtDescProd" Placeholder="Descripcion del producto"/>
+                    <Entry x:Name="txtPrecioCompraProd" Placeholder="Precio de  compra producto" Keyboard="Numeric"/>
+                    <Entry x:Name="txtPrecioVentaProd" Placeholder="Precio de venta producto" Keyboard="Numeric"/>
+                    <Entry x:Name="txtExistenciaProd" Placeholder="Existencias del producto" Keyboard="Numeric"/>
+                    <Picker Title="Selecciona la Categoria" x:Name="pickCategoriaProd" />
+                    <Picker Title="Selecciona el Proveedor" x:Name="pickProveedorProd" />
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Codigo de Barras: " FontSize="Subtitle"/>
+                        <Label x:Name="txtCodProd" Text="" FontSize="Title" TextColor="Black"/>
+                    </StackLayout>
+                    <StackLayout>
+                        <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                            <zxing:ZXingScannerView 
+                            x:Name="scanner"
+                    IsScanning="true"
+                    OnScanResult="ZXingScannerView_OnScanResult"/>
+                            <zxing:ZXingDefaultOverlay               
+                         x:Name="scannerOverlay"                                                       
+                         BottomText="Posicione el codigo en la linea roja para escanear"/>
+                        </Grid>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Presione para tomar fotografia:"/>
+                        <Button x:Name="btnFoto" Image="photocamera.png" Clicked="btnFoto_Clicked" BackgroundColor="White" />
+                        <Button x:Name="btnCancel" Image="nocamera.png" Clicked="btnCancel_Clicked" BackgroundColor="White" />
+                    </StackLayout>
+                    <Label x:Name="txtIndFoto" Text="La foto se cargara atomaticamente despues de ser tomada, tenga paciencia."/>
+                    <Label x:Name="txtDirImagen" IsVisible="false"/>
+                    <StackLayout>
+                        <Grid VerticalOptions="Fill">
+                            <Image x:Name="image"/>
+                        </Grid>
+                    </StackLayout>
+                    <Picker Title="Selecciona el estado" ItemsSource="{StaticResource Estados}" x:Name="pickEstadoProducto"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Button x:Name="btnGuardar" Image="add.png" Clicked="btnGuardar_Clicked" BackgroundColor="White" TextColor="Black" />
+                        <Button x:Name="btnCancelar"  Image="cancel.png" Clicked="btnCancelar_Clicked" BackgroundColor="White" TextColor="Black"/>
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <x:Array x:Key="Estados" Type="{x:Type x:String}">
+                <x:String>Activo</x:String>
+                <x:String>Inactivo</x:String>
+            </x:Array>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+</ContentPage>

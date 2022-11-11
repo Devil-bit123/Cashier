@@ -40,5 +40,24 @@ namespace Cashier
             App.masterDetail.IsPresented = false;
             await App.masterDetail.Detail.Navigation.PushAsync(new proveedorView());
         }
+
+        private async void btnProductos_Clicked(object sender, EventArgs e)
+        {
+            App.masterDetail.IsPresented = false;
+            await App.masterDetail.Detail.Navigation.PushAsync(new productoView());
+        }
+
+        private async void btnClientes_Clicked(object sender, EventArgs e)
+        {
+            App.masterDetail.IsPresented = false;
+            await App.masterDetail.Detail.Navigation.PushAsync(new clientesView());
+
+        }
+
+        private async void btnFacturacion_Clicked(object sender, EventArgs e)
+        {
+            App.masterDetail.IsPresented = false;
+            await App.masterDetail.Detail.Navigation.PushAsync(new facturacion());
+        }
     }
 }

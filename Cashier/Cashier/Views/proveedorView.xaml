@@ -14,9 +14,9 @@
             <Picker Title="Selecciona el estado" ItemsSource="{StaticResource Estados}" x:Name="pickEstadoProveedor" />
             <StackLayout Orientation="Horizontal">
                 <Button x:Name="btnGuardar" Text="Guardar" Clicked="btnGuardar_Clicked" BackgroundColor="#fb8c00" TextColor="Black"/>
-                <Button x:Name="btnEditar" Text="Editar" Clicked="btnEditar_Clicked" IsVisible="False" BackgroundColor="#fb8c00" TextColor="Black"/>
+                <Button x:Name="btnEditar" Text="Editar" Clicked="btnEditar_Clicked" IsVisible="False" BackgroundColor="#ffbd45" TextColor="Black"/>
                 <Button x:Name="btnCancelar" Text="Cancelar" Clicked="btnCancelar_Clicked" BackgroundColor="#fb8c00" TextColor="Black"/>
-                <Button x:Name="btnBorrar" Text="Borrar" Clicked="btnBorrar_Clicked" BackgroundColor="#fb8c00" TextColor="Black"/>
+                <Button x:Name="btnBorrar" Text="Eliminar" Clicked="btnBorrar_Clicked" BackgroundColor="#c25e00" TextColor="Black" IsVisible="false"/>
                 
             </StackLayout>
 
@@ -25,24 +25,22 @@
                     <Label Text="Proveedores Activos" FontSize="Title" HorizontalOptions="Center" TextColor="Black"/>
                     <CollectionView x:Name="CVProvAct" SelectionMode="Single" SelectionChanged="CVProvAct_SelectionChanged" >
                         <CollectionView.Header>
-                            <Grid BackgroundColor="#c25e00">
+                            <Grid  BackgroundColor="#ffbd45">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto"/>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="auto"/>                                   
                                 </Grid.ColumnDefinitions>
                                 <Label Text="Nombre" Grid.Row="0" Grid.Column="0" TextColor="Black" FontSize="Subtitle" FontAttributes="Bold"/>
                                 <Label Text="Apellido" Grid.Row="0" Grid.Column="1" TextColor="Black" FontSize="Subtitle" FontAttributes="Bold"/>
                                 <Label Text="Cedula" Grid.Row="0" Grid.Column="2" TextColor="Black" FontSize="Subtitle" FontAttributes="Bold" />
                                 <Label Text="Telefono" Grid.Row="0" Grid.Column="3" TextColor="Black" FontSize="Subtitle" FontAttributes="Bold"/>
-                                <Label Text="Empresa" Grid.Row="0" Grid.Column="4" TextColor="Black" FontSize="Subtitle" FontAttributes="Bold"/>
-                                <Label Text="Estado" Grid.Row="0" Grid.Column="5" TextColor="Black" FontSize="Subtitle" FontAttributes="Bold"/>
+                                <Label Text="Empresa" Grid.Row="0" Grid.Column="4" TextColor="Black" FontSize="Subtitle" FontAttributes="Bold"/>                                
                             </Grid>
                         </CollectionView.Header>
                         <CollectionView.ItemTemplate>
@@ -52,19 +50,17 @@
                                         <RowDefinition Height="auto"/>
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="auto"/>                                        
                                     </Grid.ColumnDefinitions>
                                     <Label Text="{Binding nomProveedor}" Grid.Row="0" Grid.Column="0" TextColor="Black"/>
                                     <Label Text="{Binding apeProveedor}" Grid.Row="0" Grid.Column="1" TextColor="Black"/>
                                     <Label Text="{Binding cedProveedor}" Grid.Row="0" Grid.Column="2" TextColor="Black"/>
                                     <Label Text="{Binding telfProveedor}" Grid.Row="0" Grid.Column="3" TextColor="Black"/>
-                                    <Label Text="{Binding idEmpresa}" Grid.Row="0" Grid.Column="4" TextColor="Black"/>
-                                    <Label Text="{Binding estadoProveedor}" Grid.Row="0" Grid.Column="5" TextColor="Black"/>                                     
+                                    <Label Text="{Binding idEmpresa}" Grid.Row="0" Grid.Column="4" TextColor="Black"/>                                    
                                 </Grid>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
@@ -72,6 +68,53 @@
                 </StackLayout>
             </ScrollView>
 
+            <ScrollView>
+                <StackLayout >
+                    <Label Text="Proveedores Inactivos" FontSize="Title" HorizontalOptions="Center" TextColor="Black"/>
+                    <CollectionView x:Name="CVProvInac" SelectionMode="Single" SelectionChanged="CVProvInac_SelectionChanged" >
+                        <CollectionView.Header>
+                            <Grid  BackgroundColor="#ffbd45">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="auto"/>                                    
+                                </Grid.ColumnDefinitions>
+                                <Label Text="Nombre" Grid.Row="0" Grid.Column="0" TextColor="Black" FontSize="Subtitle" FontAttributes="Bold"/>
+                                <Label Text="Apellido" Grid.Row="0" Grid.Column="1" TextColor="Black" FontSize="Subtitle" FontAttributes="Bold"/>
+                                <Label Text="Cedula" Grid.Row="0" Grid.Column="2" TextColor="Black" FontSize="Subtitle" FontAttributes="Bold" />
+                                <Label Text="Telefono" Grid.Row="0" Grid.Column="3" TextColor="Black" FontSize="Subtitle" FontAttributes="Bold"/>
+                                <Label Text="Empresa" Grid.Row="0" Grid.Column="4" TextColor="Black" FontSize="Subtitle" FontAttributes="Bold"/>                               
+                            </Grid>
+                        </CollectionView.Header>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="auto"/>                                        
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="{Binding nomProveedor}" Grid.Row="0" Grid.Column="0" TextColor="Black"/>
+                                    <Label Text="{Binding apeProveedor}" Grid.Row="0" Grid.Column="1" TextColor="Black"/>
+                                    <Label Text="{Binding cedProveedor}" Grid.Row="0" Grid.Column="2" TextColor="Black"/>
+                                    <Label Text="{Binding telfProveedor}" Grid.Row="0" Grid.Column="3" TextColor="Black"/>
+                                    <Label Text="{Binding idEmpresa}" Grid.Row="0" Grid.Column="4" TextColor="Black"/>                                    
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </ScrollView>
         </StackLayout>
     </ContentPage.Content>
     <ContentPage.Resources>

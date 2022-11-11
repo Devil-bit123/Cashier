@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Cashier.Views.facturacionPagadas"
+             Title="Facturas Pagadas">
+    <ContentPage.Content>
+        <StackLayout Margin="10">
+            <Label Text="Seleccione para ver detalles*" FontSize="Small" />
+            <Label x:Name="lblNFAc" />
+
+            <StackLayout>
+                <StackLayout>                    
+                        <CollectionView x:Name="CVFActuras" SelectionMode="Single" SelectionChanged="CVFActuras_SelectionChanged" >
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto"/>
+                                            <ColumnDefinition Width="auto"/>
+                                            <ColumnDefinition Width="auto"/>
+                                            <ColumnDefinition Width="auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Text="N° Fac" Grid.Row="0" Grid.Column="0" FontAttributes="Bold"/>
+                                        <Label Text="Fecha" Grid.Row="1" Grid.Column="0" FontAttributes="Bold"/>
+                                        <Label Text="Nombre" Grid.Row="2" Grid.Column="0" FontAttributes="Bold"/>
+                                        <Label Text="Telefono" Grid.Row="3" Grid.Column="0" FontAttributes="Bold"/>
+                                        <Label Text="{Binding numFac}" Grid.Row="0" Grid.Column="1"/>
+                                        <Label Text="{Binding fechaEnc}" Grid.Row="1" Grid.Column="1"/>
+                                        <Label Text="{Binding nomCli}" Grid.Row="2" Grid.Column="1"/>
+                                        <Label Text="{Binding apeCli}" Grid.Row="2" Grid.Column="3"/>
+                                        <Label Text="Cedula" Grid.Row="0" Grid.Column="2" FontAttributes="Bold"/>
+                                        <Label Text="Direccion" Grid.Row="1" Grid.Column="2" FontAttributes="Bold"/>
+                                        <Label Text="Apellido" Grid.Row="2" Grid.Column="2" FontAttributes="Bold"/>
+                                        <Label Text="{Binding cedCli}" Grid.Row="0" Grid.Column="3"/>
+                                        <Label Text="{Binding dirCliente}" Grid.Row="1" Grid.Column="3"/>
+                                        <Label Text="{Binding telfCliente}" Grid.Row="3" Grid.Column="1"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

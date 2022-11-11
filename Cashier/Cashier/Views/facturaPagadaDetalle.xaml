@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Cashier.Views.facturaPagadaDetalle"
+             Title="Detalle Completo">
+    <ContentPage.Content>
+        <StackLayout Margin="10">
+            <StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Numero de Factura" FontSize="Subtitle" FontAttributes="Bold"/>
+                    <Label x:Name="lblNF" Text="{Binding numFac}"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Fecha" FontSize="Subtitle" FontAttributes="Bold"/>
+                    <Label Text="{Binding fechaEnc}"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Nombre" FontSize="Subtitle" FontAttributes="Bold"/>
+                    <Label Text="{Binding nomCli}"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" >
+                    <Label Text="Apellido" FontSize="Subtitle" FontAttributes="Bold"/>
+                    <Label Text="{Binding apeCli}"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Cedula" FontSize="Subtitle" FontAttributes="Bold"/>
+                    <Label Text="{Binding cedCli}"/>
+                </StackLayout>
+
+                <StackLayout>
+                    <Label Text="Direccion" FontSize="Subtitle" FontAttributes="Bold"/>
+                    <Label Text="{Binding dirCliente}"/>
+                </StackLayout>
+
+                <StackLayout>
+                    <Label Text="Telefono" FontSize="Subtitle" FontAttributes="Bold"/>
+                    <Label Text="{Binding telfCliente}"/>
+                </StackLayout>
+                
+                <StackLayout>
+                    <CollectionView x:Name="CVcarrito">
+                        <CollectionView.Header>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="Cantidad" Grid.Row="0" Grid.Column="0" FontAttributes="Bold"/>
+                                <Label Text="Nombre" Grid.Row="0" Grid.Column="1" FontAttributes="Bold" />
+                                <Label Text="PVP" Grid.Row="0" Grid.Column="2" FontAttributes="Bold"/>
+                                <Label Text="Total" Grid.Row="0" Grid.Column="3" FontAttributes="Bold"/>
+                            </Grid>
+                        </CollectionView.Header>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="{Binding cantidad}" Grid.Row="0" Grid.Column="0" />
+                                    <Label Text="{Binding nomProducto}" Grid.Row="0" Grid.Column="1" />
+                                    <Label Text="{Binding preVentaProducto}" Grid.Row="0" Grid.Column="2"/>
+                                    <Label  Text="{Binding total}" Grid.Row="0" Grid.Column="3"/>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Total: $" FontSize="Title" FontAttributes="Bold"/>
+                    <Label x:Name="lblTotal"  FontSize="Title" />
+                </StackLayout>
+                
+            </StackLayout>
+            <Button x:Name="btnBack" Image="cancel.png" Clicked="btnBack_Clicked" BackgroundColor="White" HorizontalOptions="CenterAndExpand"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

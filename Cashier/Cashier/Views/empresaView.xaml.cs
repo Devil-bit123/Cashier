@@ -17,6 +17,7 @@ namespace Cashier.Views
         {
             InitializeComponent();
             llenarCV();
+            
         }
         #region Validaciones
 
@@ -108,6 +109,7 @@ namespace Cashier.Views
             var selectedEmpresa=e.CurrentSelection.FirstOrDefault() as empresa;
             btnGuardar.IsVisible = false;
             btnEditar.IsVisible = true;
+            btnEliminar.IsVisible = true;
             if (!string.IsNullOrEmpty(selectedEmpresa.idEmpresa.ToString())) 
             {
                 var empresa = await App.SQLiteDB.recuperarEmpresaXid(selectedEmpresa.idEmpresa);
@@ -117,6 +119,7 @@ namespace Cashier.Views
                     txtNombreEmpresa.Text = empresa.nomEmpresa.ToString();
                     txtDireccionEmpresa.Text = empresa.dirEmpresa.ToString();
                     txtTelfEmpresa.Text = empresa.teflEmpresa.ToString();
+                    pickEstadoEmpresa.SelectedItem = empresa.estadoEmpresa;
                 }
             }
 
@@ -160,8 +163,24 @@ namespace Cashier.Views
                     txtNombreEmpresa.Text = empresa.nomEmpresa.ToString();
                     txtDireccionEmpresa.Text = empresa.dirEmpresa.ToString();
                     txtTelfEmpresa.Text = empresa.teflEmpresa.ToString();
+                    pickEstadoEmpresa.SelectedItem = empresa.estadoEmpresa;
                 }
             }
+        }
+
+        private async void btnEliminar_Clicked(object sender, EventArgs e)
+        {
+            var emp = await App.SQLiteDB.recuperarEmpresaXid(Convert.ToInt32(txtIdEmpresa.Text));
+            if (emp != null)
+            {
+                await App.SQLiteDB.eliminiarEmpresaAsync(emp);
+            }
+            await DisplayAlert("OK!", "Empresa eliminada", "OK");
+            btnEditar.IsVisible = false;
+            btnEliminar.IsVisible = false;
+            btnGuardar.IsVisible = true;
+            llenarCV();
+            vaciarTexto();
         }
     }
 }
