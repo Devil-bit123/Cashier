@@ -4,8 +4,24 @@
              x:Class="Cashier.Detail"
              >
     <ContentPage.Content>
-        <StackLayout>
-          
+        <StackLayout Padding="10" HorizontalOptions="Center">
+            <Grid HorizontalOptions="Center" VerticalOptions="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="Ventas Totales Ayer:" Grid.Row="0" Grid.Column="0" HorizontalTextAlignment="Start" FontSize="Subtitle" FontAttributes="Bold"/>
+                <Label Text="" Grid.Row="0" Grid.Column="1"/>
+                <Label Text="Ultima Venta:" Grid.Row="1" Grid.Column="0" HorizontalTextAlignment="Start" FontSize="Subtitle" FontAttributes="Bold"/>
+                <Label x:Name="lblUventa"  Grid.Row="1" Grid.Column="1" HorizontalTextAlignment="Center"/>
+                <Label Text="Ventas Totales Hoy:" Grid.Row="2" Grid.Column="0" HorizontalTextAlignment="Start" FontSize="Subtitle" FontAttributes="Bold"/>
+                <Label Text="" Grid.Row="2" Grid.Column="1"/>
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

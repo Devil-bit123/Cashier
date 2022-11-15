@@ -67,7 +67,7 @@ namespace Cashier.Views
 
         private void limpiarCarrito()
         {
-
+            
 
         }
         private bool validarTxtAddPannel()
@@ -368,9 +368,10 @@ namespace Cashier.Views
             }
             limpiarResBusqueda();
             CVcarrito.ItemsSource = null;
+            limpiarCarrito();
             await this.Navigation.PopAsync();
-            
-           
+            Navigation.RemovePage(this);
+
         }
     }
 }

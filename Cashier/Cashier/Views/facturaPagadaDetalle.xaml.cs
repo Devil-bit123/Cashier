@@ -27,19 +27,17 @@ namespace Cashier.Views
         #region funcoines
         private async void llenarCV()
         {
+            decimal acumulador = 0;
             var carrito = await App.SQLiteDB.recuperarDetallesAsync(lblNF.Text);
             if (carrito != null)
             {
                 CVcarrito.ItemsSource = carrito;
                 foreach (var c in carrito)
                 {
-                    decimal acumulador = 0;
-                    for (int i = 0; i < carrito.Count; i++)
-                    {
-
+                                    
+                    
                         acumulador += c.total;
-
-                    }
+                   
                     lblTotal.Text = acumulador.ToString();
                 }
             }

@@ -8,7 +8,7 @@
             <StackLayout>
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Numero de Factura" FontSize="Subtitle" FontAttributes="Bold"/>
-                    <Label x:Name="lblNF" Text="{Binding numFac}"/>
+                    <Label x:Name="lblNF" Text="{Binding numFac}" />
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal">

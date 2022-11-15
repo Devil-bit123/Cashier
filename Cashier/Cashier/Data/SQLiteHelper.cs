@@ -511,6 +511,14 @@ namespace Cashier.Data
         {
             return db.Table<encFactura>().Where(fac => fac.estadoEnc == "Pagada").ToListAsync();
         }
+        /// <summary>
+        /// Recuperar todos los detalles de ventas
+        /// </summary>
+        /// <returns></returns>
+        public Task<List<detFac>> recuperarDetallesAssync()
+        {
+            return db.Table<detFac>().ToListAsync();
+        }
 
         public Task<int> editarEncabezadoAsync(encFactura encabezado)
         {
@@ -554,7 +562,7 @@ namespace Cashier.Data
             return db.Table<detFac>().Where(fac => fac.numFac == numF).ToListAsync();
         }
         /// <summary>
-        /// Recupera los productos por ID y NF
+        /// Recupera los productos del carrito por ID y NF
         /// </summary>
         /// <param name="id"></param>
         /// <param name="nF"></param>

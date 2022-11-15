@@ -18,6 +18,7 @@ namespace Cashier.Views
             InitializeComponent();
             llenarValores();
         }
+       
 
         #region funcoines
 
@@ -43,6 +44,7 @@ namespace Cashier.Views
                 facturaPagadaDetalle pagadaDetalle = new facturaPagadaDetalle();
                 pagadaDetalle.BindingContext = itemselected;
                 this.Navigation.PushModalAsync(pagadaDetalle);
+                CVFActuras.SelectedItem = null;
             }
         }
     }

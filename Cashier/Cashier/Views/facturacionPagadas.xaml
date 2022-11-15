@@ -6,7 +6,7 @@
     <ContentPage.Content>
         <StackLayout Margin="10">
             <Label Text="Seleccione para ver detalles*" FontSize="Small" />
-            <Label x:Name="lblNFAc" />
+            <Label x:Name="lblNFAc" IsVisible="false" />
 
             <StackLayout>
                 <StackLayout>                    

@@ -191,10 +191,10 @@ namespace Cashier.Views
 
         private async void btnList_Clicked(object sender, EventArgs e)
         {
-            App.masterDetail.IsPresented = false;
-            Navigation.RemovePage(this);
+            App.masterDetail.IsPresented = false;            
             await App.masterDetail.Detail.Navigation.PushAsync(new productoList());
-           
+            Navigation.RemovePage(this);
+
         }
 
         private void btnCancel_Clicked(object sender, EventArgs e)
