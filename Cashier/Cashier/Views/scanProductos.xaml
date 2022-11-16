@@ -41,7 +41,8 @@
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="*"/>                    </Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>                    
+                    </Grid.ColumnDefinitions>
                     <Image x:Name="ImgProd" Grid.Column="0" Grid.Row="0" Grid.RowSpan="6"/>
                     <Label Text="Nombre:" Grid.Row="0" Grid.Column="1" />
                     <Label Text="Descripcion:" Grid.Row="1" Grid.Column="1" />
@@ -51,14 +52,14 @@
                     <Label Text="Categoria:" Grid.Row="5" Grid.Column="1"  />
                     <Label Text="Proveedor:" Grid.Row="6" Grid.Column="1"  />
                     <Label Text="Codigo:" Grid.Row="7" Grid.Column="1"  />
-                    <Label x:Name="lblprodN" Text="0" Grid.Row="0" Grid.Column="2" />
-                    <Label x:Name="lblprodD" Text="1" Grid.Row="1" Grid.Column="2"/>
-                    <Label x:Name="lblprodPC" Text="2" Grid.Row="2" Grid.Column="2"/>
-                    <Label x:Name="lblprodPV" Text="3" Grid.Row="3" Grid.Column="2"/>
-                    <Label x:Name="lblprodEx" Text="4" Grid.Row="4" Grid.Column="2"/>
-                    <Label x:Name="lblprodCat" Text="5" Grid.Row="5" Grid.Column="2"/>
-                    <Label x:Name="lblprodProv" Text="6" Grid.Row="6" Grid.Column="2"/>                    
-                    <Label x:Name="lblprodCod" Text="7" Grid.Row="8" Grid.Column="2"/>                    
+                    <Label x:Name="lblprodN" Text="" Grid.Row="0" Grid.Column="2" />
+                    <Label x:Name="lblprodD" Text="" Grid.Row="1" Grid.Column="2"/>
+                    <Label x:Name="lblprodPC" Text="" Grid.Row="2" Grid.Column="2"/>
+                    <Label x:Name="lblprodPV" Text="" Grid.Row="3" Grid.Column="2"/>
+                    <Label x:Name="lblprodEx" Text="" Grid.Row="4" Grid.Column="2"/>
+                    <Label x:Name="lblprodCat" Text="" Grid.Row="5" Grid.Column="2"/>
+                    <Label x:Name="lblprodProv" Text="" Grid.Row="6" Grid.Column="2"/>                    
+                    <Label x:Name="lblprodCod" Text="" Grid.Row="7" Grid.Column="2"/>                    
                 </Grid>
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Cantidad: " FontSize="Title"/>                   
@@ -70,8 +71,11 @@
                     <Label x:Name="lblTotal" FontSize="Title"/>                    
                 </StackLayout>
             </StackLayout>
-            <Button x:Name="btnBack" Text="Back" Clicked="btnBack_Clicked" />
-            <Button x:Name="btnCobrar" Text="cobrar" Clicked="btnCobrar_Clicked"  />
+            <StackLayout Orientation="Horizontal">
+                <Button x:Name="btnBack" Image="cancel.png" Clicked="btnBack_Clicked" />
+                <Button x:Name="btnCobrar" Image="checked.png" Clicked="btnCobrar_Clicked"  />
+            </StackLayout>
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

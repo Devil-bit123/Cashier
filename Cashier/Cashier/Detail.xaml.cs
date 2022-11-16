@@ -48,7 +48,7 @@ namespace Cashier
             }
             else
             {
-                lblUventa.Text = "No se pudo cargar venta";
+                lblUventa.Text = "$ 0";
             }
            
         }

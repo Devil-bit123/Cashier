@@ -199,7 +199,7 @@ namespace Cashier.Views
 
         private void btnCancel_Clicked(object sender, EventArgs e)
         {
-
+            txtDirImagen.Text = "smile128.png";
         }
     }
 }

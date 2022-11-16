@@ -26,21 +26,26 @@ namespace Cashier.Views
             {
                 txtBusquedaCli.Keyboard = Keyboard.Default;
             }
+            if (string.IsNullOrEmpty(txtBusquedaCli.Text))
+            {
+                CVcarrito.ItemsSource = null;
+            }
             NumFac();
             llenarCV();
         }
 
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
             //Write the code of your page here
-            llenarCV();
+            llenarCV();          
+           
             base.OnAppearing();
         }
         #region funciones
 
         private async void NumFac()
         {
-            var Nfac = await App.SQLiteDB.recuperarFacturasAbiertassync();
+            var Nfac = await App.SQLiteDB.recuperarFacturasPagadaAssync();
             var n = Nfac.Count() + 1;
             lblNumFac.Text = n.ToString();
         }
@@ -67,8 +72,8 @@ namespace Cashier.Views
 
         private void limpiarCarrito()
         {
-            
 
+            lblNumFac.Text = "";
         }
         private bool validarTxtAddPannel()
         {
@@ -133,13 +138,14 @@ namespace Cashier.Views
 
         private async void llenarCV()
         {
+            decimal acumulador = 0;
             var carrito = await App.SQLiteDB.recuperarDetallesAsync(lblNumFac.Text);
             if(carrito != null)
             {
                 CVcarrito.ItemsSource = carrito;
                 foreach (var c in carrito)
                 {
-                    decimal acumulador = 0;
+                   
                     for (int i = 0; i < carrito.Count; i++)
                     {
 
@@ -157,6 +163,7 @@ namespace Cashier.Views
 
             if (SwitchBusqueda.IsToggled == false)
             {
+                txtBusquedaCli.MaxLength = 10;
                 var cedCli = await App.SQLiteDB.recuperarClienteXCedAsync(txtBusquedaCli.Text);
                 if (cedCli != null)
                 {
@@ -369,7 +376,7 @@ namespace Cashier.Views
             limpiarResBusqueda();
             CVcarrito.ItemsSource = null;
             limpiarCarrito();
-            await this.Navigation.PopAsync();
+            await this.Navigation.PopToRootAsync();
             Navigation.RemovePage(this);
 
         }

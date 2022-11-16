@@ -54,6 +54,7 @@ namespace Cashier.Views
                     await App.SQLiteDB.editarProductoAsync(nstock);
                 }
                 await DisplayAlert("OK!", "Producto Editado", "OK");
+                await Navigation.PopModalAsync();
             }
 
         }
@@ -62,15 +63,13 @@ namespace Cashier.Views
         {
             lblCant.Text= e.NewValue.ToString();
             decimal pvp = Convert.ToDecimal(lblPVP.Text);
-            int cant = Convert.ToInt32(lblCant.Text);
+            decimal cant = Convert.ToDecimal(lblCant.Text);
             decimal tot = pvp * cant;
+            lblTotal.Text= tot.ToString();
             lblTot.Text= tot.ToString();
         }
 
-        private void btnBack_Clicked(object sender, EventArgs e)
-        {
-            this.Navigation.PopModalAsync();
-        }
+       
 
   
     }

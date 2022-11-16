@@ -110,6 +110,7 @@ namespace Cashier.Views
                 };
                 await App.SQLiteDB.crearProveedorAsync(prov);
                 await DisplayAlert("OK!","Proveedor creado","OK");
+                VaciarTXT();
                 llenarCV();
                 
             }

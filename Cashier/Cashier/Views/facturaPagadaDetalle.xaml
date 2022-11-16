@@ -4,43 +4,36 @@
              x:Class="Cashier.Views.facturaPagadaDetalle"
              Title="Detalle Completo">
     <ContentPage.Content>
-        <StackLayout Margin="10">
+        <StackLayout Margin="10" Padding="2">
             <StackLayout>
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Numero de Factura" FontSize="Subtitle" FontAttributes="Bold"/>
                     <Label x:Name="lblNF" Text="{Binding numFac}" />
                 </StackLayout>
-
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Fecha" FontSize="Subtitle" FontAttributes="Bold"/>
                     <Label Text="{Binding fechaEnc}"/>
                 </StackLayout>
-
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Nombre" FontSize="Subtitle" FontAttributes="Bold"/>
                     <Label Text="{Binding nomCli}"/>
                 </StackLayout>
-
                 <StackLayout Orientation="Horizontal" >
                     <Label Text="Apellido" FontSize="Subtitle" FontAttributes="Bold"/>
                     <Label Text="{Binding apeCli}"/>
                 </StackLayout>
-
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Cedula" FontSize="Subtitle" FontAttributes="Bold"/>
                     <Label Text="{Binding cedCli}"/>
                 </StackLayout>
-
                 <StackLayout>
                     <Label Text="Direccion" FontSize="Subtitle" FontAttributes="Bold"/>
                     <Label Text="{Binding dirCliente}"/>
                 </StackLayout>
-
                 <StackLayout>
                     <Label Text="Telefono" FontSize="Subtitle" FontAttributes="Bold"/>
                     <Label Text="{Binding telfCliente}"/>
-                </StackLayout>
-                
+                </StackLayout>                
                 <StackLayout>
                     <CollectionView x:Name="CVcarrito">
                         <CollectionView.Header>
@@ -84,8 +77,7 @@
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Total: $" FontSize="Title" FontAttributes="Bold"/>
                     <Label x:Name="lblTotal"  FontSize="Title" />
-                </StackLayout>
-                
+                </StackLayout>                
             </StackLayout>
             <Button x:Name="btnBack" Image="cancel.png" Clicked="btnBack_Clicked" BackgroundColor="White" HorizontalOptions="CenterAndExpand"/>
         </StackLayout>

@@ -64,7 +64,7 @@
                 <Button x:Name="BtnScanProd" Image="barcode.png" BackgroundColor="White" Clicked="BtnScanProd_Clicked" CornerRadius="20"/>               
             </StackLayout>
             <StackLayout>
-                <CollectionView x:Name="CVcarrito" SelectionMode="Single" SelectionChanged="CVcarrito_SelectionChanged">
+                <CollectionView x:Name="CVcarrito" SelectionMode="Single" SelectionChanged="CVcarrito_SelectionChanged" >
                     <CollectionView.Header>
                         <Grid>
                             <Grid.RowDefinitions>
@@ -97,7 +97,7 @@
                                 <Label Text="{Binding cantidad}" Grid.Row="0" Grid.Column="0" />
                                 <Label Text="{Binding nomProducto}" Grid.Row="0" Grid.Column="1" />
                                 <Label Text="{Binding preVentaProducto}" Grid.Row="0" Grid.Column="2"/>
-                                <Label Text="{Binding total}" Grid.Row="0" Grid.Column="3"/>
+                                <Label Text="{Binding total}" Grid.Row="0" Grid.Column="3" />
                             </Grid>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
@@ -110,7 +110,7 @@
             <StackLayout Orientation="Horizontal">
                 <Button x:Name="BtnCash"  Image="payperclick.png"  BackgroundColor="White" Clicked="BtnCash_Clicked"  CornerRadius="20" />
                 <Button x:Name="BtnCancelFac"  Image="cancel.png"  BackgroundColor="White" Clicked="BtnCancelFac_Clicked" CornerRadius="20" />
-                <Label x:Name="pppp"/>
+               
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

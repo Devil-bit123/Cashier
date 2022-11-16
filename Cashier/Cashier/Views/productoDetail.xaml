@@ -10,48 +10,44 @@
             <Button Image="cancel.png" x:Name="btnBack" Clicked="btnBack_Clicked" HorizontalOptions="End" BackgroundColor="White" />
             <StackLayout Margin="10" Padding="2">
                 <StackLayout x:Name="DetailPannel" IsVisible="true">
-                    <Label x:Name="txtIdProd" IsVisible="true"/>
-                    
-                           
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*"/>
-                                        <RowDefinition Height="*"/>
-                                        <RowDefinition Height="*"/>
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="2*"/>
-                                        <ColumnDefinition Width="auto"/>
-                                        <ColumnDefinition Width="auto"/>
-                                        <ColumnDefinition Width="auto"/>
-                                        <ColumnDefinition Width="auto"/>
-                                        <ColumnDefinition Width="auto"/>
-                                        <ColumnDefinition Width="auto"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Image x:Name="DTImage" Source="{Binding imageProd}" Grid.Row="0" Grid.Column="0" Grid.RowSpan="4"  />
-                                    <Label Text="Nombre:" Grid.Row="0" Grid.Column="1" FontAttributes="Bold"/>
-                                    <Label x:Name="lblNomProd" Text="{Binding nomProducto}" Grid.Row="0" Grid.Column="2"/>
-                                    <Label Text="Descripcion" Grid.Row="1" Grid.Column="1" FontAttributes="Bold"/>
-                                    <Label x:Name="lblDescProd" Text="{Binding descProducto}" Grid.Row="1" Grid.Column="2"/>
-                                    <Label Text="P. Compra:" Grid.Row="2" Grid.Column="1" FontAttributes="Bold"/>
-                                    <Label x:Name="lblPCompraProd" Text="{Binding preCompraProd, StringFormat='{0:C}'}" Grid.Row="2" Grid.Column="2"/>
-                                    <Label Text="P. Venta:" Grid.Row="3" Grid.Column="1" FontAttributes="Bold"/>
-                                    <Label x:Name="lblPVentaProd" Text="{Binding preVentaProd, StringFormat='{0:C}'}" Grid.Row="3" Grid.Column="2"/>
-                                    <Label Text="Existencias:" Grid.Row="4" Grid.Column="0" FontAttributes="Bold"/>
-                                    <Label x:Name="lblExisProd" Text="{Binding existProd}"  Grid.Row="4" Grid.Column="1" />
-                                    <Label Text="Categoria:" Grid.Row="5" Grid.Column="0" FontAttributes="Bold"/>
-                                    <Label x:Name="lblCatProd" Text="{Binding idCategoria}" Grid.Row="5" Grid.Column="1" />
-                                    <Label Text="Proveedor:" Grid.Row="6" Grid.Column="0" FontAttributes="Bold"/>
-                                    <Label x:Name="lblProvProd" Text="{Binding idProveedor}" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" />
-                                    <Label Text="Cod. Barras:" Grid.Row="7" Grid.Column="0" FontAttributes="Bold"/>
-                                    <Label x:Name="lblNBcodProd" Text="{Binding barCodeProd}" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" />
-                                    <Label Text="Estado:" Grid.Row="8" Grid.Column="0" FontAttributes="Bold"/>
-                                    <Label x:Name="lblEstadoProd" Text="{Binding estadoProd}" Grid.Row="8" Grid.Column="1" TextColor="Red" />
-                                </Grid>
-                          
-                      
+                    <Label x:Name="txtIdProd" IsVisible="false"/>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Image x:Name="DTImage" Source="{Binding imageProd}" Grid.Row="0" Grid.Column="0" Grid.RowSpan="4"  />
+                        <Label Text="Nombre:" Grid.Row="0" Grid.Column="1" FontAttributes="Bold"/>
+                        <Label x:Name="lblNomProd" Text="{Binding nomProducto}" Grid.Row="0" Grid.Column="2"/>
+                        <Label Text="Descripcion" Grid.Row="1" Grid.Column="1" FontAttributes="Bold"/>
+                        <Label x:Name="lblDescProd" Text="{Binding descProducto}" Grid.Row="1" Grid.Column="2"/>
+                        <Label Text="P. Compra:" Grid.Row="2" Grid.Column="1" FontAttributes="Bold"/>
+                        <Label x:Name="lblPCompraProd" Text="{Binding preCompraProd, StringFormat='{0:C}'}" Grid.Row="2" Grid.Column="2"/>
+                        <Label Text="P. Venta:" Grid.Row="3" Grid.Column="1" FontAttributes="Bold"/>
+                        <Label x:Name="lblPVentaProd" Text="{Binding preVentaProd, StringFormat='{0:C}'}" Grid.Row="3" Grid.Column="2"/>
+                        <Label Text="Existencias:" Grid.Row="4" Grid.Column="0" FontAttributes="Bold"/>
+                        <Label x:Name="lblExisProd" Text="{Binding existProd}"  Grid.Row="4" Grid.Column="1" />
+                        <Label Text="Categoria:" Grid.Row="5" Grid.Column="0" FontAttributes="Bold"/>
+                        <Label x:Name="lblCatProd" Text="{Binding idCategoria}" Grid.Row="5" Grid.Column="1" />
+                        <Label Text="Proveedor:" Grid.Row="6" Grid.Column="0" FontAttributes="Bold"/>
+                        <Label x:Name="lblProvProd" Text="{Binding idProveedor}" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" />
+                        <Label Text="Cod. Barras:" Grid.Row="7" Grid.Column="0" FontAttributes="Bold"/>
+                        <Label x:Name="lblNBcodProd" Text="{Binding barCodeProd}" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" />
+                        <Label Text="Estado:" Grid.Row="8" Grid.Column="0" FontAttributes="Bold"/>
+                        <Label x:Name="lblEstadoProd" Text="{Binding estadoProd}" Grid.Row="8" Grid.Column="1" TextColor="Red" />
+                    </Grid>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Start">
                     <Button Image="edit64px.png" x:Name="btnEdit" Clicked="btnEdit_Clicked" BackgroundColor="White"  />
@@ -104,7 +100,6 @@
                 </StackLayout>
             </StackLayout>
         </StackLayout>
-
     </ContentPage.Content>
     <ContentPage.Resources>
         <ResourceDictionary>

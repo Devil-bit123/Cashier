@@ -14,10 +14,10 @@
             <Entry x:Name="txTelfCliente" Placeholder="Telefono del cliente" Keyboard="Numeric" MaxLength="10"/>
             <Picker Title="Selecciona el estado" ItemsSource="{StaticResource Estados}" x:Name="pickEstadoCliente" />
             <StackLayout Orientation="Horizontal">
-                <Button x:Name="btnGuardar" Text="Guardar" Clicked="btnGuardar_Clicked" BackgroundColor="#fb8c00" TextColor="Black"/>
-                <Button x:Name="btnEditar" Text="Editar" Clicked="btnEditar_Clicked" BackgroundColor="#ffbd45" TextColor="Black" IsVisible="false"/>
-                <Button x:Name="btnCancelar" Text="Cancelar" Clicked="btnCancelar_Clicked" BackgroundColor="#fb8c00" TextColor="Black"/>
-                <Button x:Name="btnEliminar" Text="Eliminar" Clicked="btnEliminar_Clicked" BackgroundColor="#c25e00" TextColor="Black" IsVisible="false"/>
+                <Button x:Name="btnGuardar" Image="add.png" Clicked="btnGuardar_Clicked" BackgroundColor="#fb8c00" TextColor="Black"/>
+                <Button x:Name="btnEditar" Image="edit32.png" Clicked="btnEditar_Clicked" BackgroundColor="#ffbd45" TextColor="Black" IsVisible="false"/>
+                <Button x:Name="btnCancelar" Image="cancel.png" Clicked="btnCancelar_Clicked" BackgroundColor="#fb8c00" TextColor="Black"/>
+                <Button x:Name="btnEliminar" Image="delete32.png" Clicked="btnEliminar_Clicked" BackgroundColor="#c25e00" TextColor="Black" IsVisible="false"/>
             </StackLayout>
             <StackLayout>
                 <Label Text="Clientes Activos"  FontSize="Title" HorizontalOptions="Center" TextColor="Black"/>

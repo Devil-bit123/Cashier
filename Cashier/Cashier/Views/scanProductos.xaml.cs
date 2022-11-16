@@ -32,9 +32,9 @@ namespace Cashier.Views
             lblprodCat.Text = "";
             lblprodProv.Text = "";
             lblprodCod.Text = "";            
-            lblCantidad.Text = "";
+            lblCantidad.Text = "1";
             lblTotal.Text = "";
-            stpCantidad.Value = 0;
+            stpCantidad.Value = 1;
             txtBusquedaNomProd.Text = "";
 
         }
@@ -88,6 +88,10 @@ namespace Cashier.Views
                     lblprodCat.Text = prod.idCategoria;
                     lblprodProv.Text = prod.idProveedor;
                     lblprodCod.Text = prod.barCodeProd;
+                    decimal PV = Convert.ToDecimal(lblprodPV.Text);
+                    decimal cant = Convert.ToDecimal(lblCantidad.Text);
+                    decimal tot=PV*cant;
+                    lblTotal.Text = tot.ToString(); 
 
                 }
             }

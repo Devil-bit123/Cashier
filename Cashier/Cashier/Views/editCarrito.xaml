@@ -4,8 +4,8 @@
              x:Class="Cashier.Views.editCarrito">
     <ContentPage.Content>
         <StackLayout Margin="10">
-            <Label x:Name="lblIDProd" Text="{Binding idDet}"/>
-            <Label x:Name="lblNF" Text="{Binding numFac}"/>
+            <Label x:Name="lblIDProd" Text="{Binding idDet}"  IsVisible="false"/>
+            <Label x:Name="lblNF" Text="{Binding numFac}" IsVisible="false"/>
             <StackLayout>
                 <Grid>
                     <Grid.RowDefinitions>
@@ -32,11 +32,11 @@
                 </Grid>          
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Total $: " FontSize="Title"/>
-                    <Label x:Name="lblTotal" Text="{Binding total}" FontSize="Title"/>
+                    <Label x:Name="lblTotal" Text="" FontSize="Title"/>
                 </StackLayout>
             </StackLayout>
-            <Button x:Name="btnBack" Text="Back" Clicked="btnBack_Clicked" />
-            <Button x:Name="btnCobrar" Text="cobrar" Clicked="btnCobrar_Clicked"  />
+            
+            <Button x:Name="btnCobrar" Image="checked.png" Clicked="btnCobrar_Clicked"  />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
