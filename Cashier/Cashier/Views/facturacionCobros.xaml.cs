@@ -36,9 +36,18 @@ namespace Cashier.Views
 
         protected async override void OnAppearing()
         {
-            //Write the code of your page here
-            llenarCV();          
-           
+            decimal acumulador = 0;
+            //Write the code of your page here        
+            var carrito = await App.SQLiteDB.recuperarDetallesAsync(lblNumFac.Text);
+            if (carrito!=null)
+            {
+                CVcarrito.ItemsSource = carrito;
+                foreach (var c in carrito)
+                {
+                    acumulador += c.total;
+                    lblTotal.Text = acumulador.ToString();
+                }
+            }
             base.OnAppearing();
         }
         #region funciones
@@ -286,6 +295,10 @@ namespace Cashier.Views
                 scanProductos modal = new scanProductos();
                 modal.BindingContext = encabezado;
                 await this.Navigation.PushModalAsync(modal);
+            }
+            else
+            {
+               await DisplayAlert("ERROR!", "Necesita agregar un clietne primero", "OK");
             } 
 
 
@@ -311,7 +324,7 @@ namespace Cashier.Views
                             dev.idProducto = dev.idProducto;
                             dev.nomProducto = dev.nomProducto;
                             dev.descProducto = dev.descProducto;
-                            dev.preVentaProd = dev.preCompraProd;
+                            dev.preCompraProd = dev.preCompraProd;
                             dev.preVentaProd = dev.preVentaProd;
                             dev.existProd = devolucion;
                             dev.idCategoria = dev.idCategoria;
@@ -372,12 +385,17 @@ namespace Cashier.Views
                 };
                 await App.SQLiteDB.editarEncabezadoAsync(cierre);
                 await DisplayAlert("OK!","Venta realizada","OK");
+                limpiarResBusqueda();
+                CVcarrito.ItemsSource = null;
+                limpiarCarrito();
+                await this.Navigation.PopToRootAsync();
+                Navigation.RemovePage(this);
             }
-            limpiarResBusqueda();
-            CVcarrito.ItemsSource = null;
-            limpiarCarrito();
-            await this.Navigation.PopToRootAsync();
-            Navigation.RemovePage(this);
+            else
+            {
+                await DisplayAlert("ERROR!", "Primero debe agregar un cliente y facturar productos", "OK");
+            }
+            
 
         }
     }

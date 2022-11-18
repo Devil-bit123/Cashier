@@ -15,17 +15,21 @@ namespace Cashier
         public Detail()
         {
             InitializeComponent();
-            Ventas();
+            ventasHoy();
+            ventasAyer();
+            UltimaVenta();
         }
         protected override void OnAppearing()
         {
             //Write the code of your page here
-            Ventas();
+            ventasHoy();
+            ventasAyer();
+            UltimaVenta();
             base.OnAppearing();
         }
 
         #region funciones
-        private async void Ventas()
+        private async void UltimaVenta()
         {
             decimal tot = 0;
             var todosEnc = await App.SQLiteDB.recuperarFacturasPagadaAssync();
@@ -40,7 +44,7 @@ namespace Cashier
                         foreach (var c in carrito)
                         {
                             tot = tot + c.total;
-                            lblUventa.Text = "$ "+tot.ToString();                            
+                            lblUventa.Text = "$ "+ tot.ToString();                            
                         }
                     }
 
@@ -51,6 +55,66 @@ namespace Cashier
                 lblUventa.Text = "$ 0";
             }
            
+        }
+
+        private async void ventasAyer()
+        {
+            decimal tot=0;
+            string ayer = DateTime.Now.AddDays(-1).ToShortDateString();
+            var Vayer = await App.SQLiteDB.recuperarFacturasPagadasxFechaAssync(ayer);
+            if (Vayer!=null)
+            {
+                foreach (var v in Vayer)
+                {
+                    var carrito = await App.SQLiteDB.recuperarDetallesAsync(v.numFac);
+                    if (carrito!=null)
+                    {
+                        foreach (var c in carrito)
+                        {
+                            tot+=c.total;
+                            lblVayer.Text ="$ "+ tot.ToString();
+                        }
+                    }
+
+                }
+            }
+            else
+            {
+                lblVayer.Text = "$ 0";
+            }
+
+       
+        }
+
+
+
+        private async void ventasHoy()
+        {
+            decimal tot = 0;
+            string ayer = DateTime.Now.ToShortDateString();
+            var Vayer = await App.SQLiteDB.recuperarFacturasPagadasxFechaAssync(ayer);
+            if (Vayer != null)
+            {
+                foreach (var v in Vayer)
+                {
+                    var carrito = await App.SQLiteDB.recuperarDetallesAsync(v.numFac);
+                    if (carrito != null)
+                    {
+                        foreach (var c in carrito)
+                        {
+                            tot += c.total;
+                            lblVhoy.Text ="$ "+ tot.ToString();
+                        }
+                    }
+
+                }
+            }
+            else
+            {
+               lblVhoy.Text = "$ 0";
+            }
+
+
         }
 
         #endregion

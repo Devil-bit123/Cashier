@@ -613,6 +613,11 @@ namespace Cashier.Data
         }
 
 
+        public Task<List<encFactura>> recuperarFacturasPagadasxFechaAssync(string date)
+        {
+            return db.Table<encFactura>().Where(fac => fac.estadoEnc == "Pagada" && fac.fechaEnc.Contains(date)).ToListAsync();
+        }
+
         #endregion
     }
 }

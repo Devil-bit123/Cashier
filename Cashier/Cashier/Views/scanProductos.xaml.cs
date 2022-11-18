@@ -172,6 +172,10 @@ namespace Cashier.Views
                 await DisplayAlert("OK!","Producto Facturado","OK");
                 limpiarResBus();
             }
+            else
+            {
+                await DisplayAlert("ERROR!", "Primero debe facturar productos", "OK");
+            }
 
         }
     }

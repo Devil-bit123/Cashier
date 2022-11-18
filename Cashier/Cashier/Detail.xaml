@@ -16,11 +16,11 @@
                     <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
                 <Label Text="Ventas Totales Ayer:" Grid.Row="0" Grid.Column="0" HorizontalTextAlignment="Start" FontSize="Subtitle" FontAttributes="Bold"/>
-                <Label Text="" Grid.Row="0" Grid.Column="1"/>
+                <Label x:Name="lblVayer" Text="" Grid.Row="0" Grid.Column="1"/>
                 <Label Text="Ultima Venta:" Grid.Row="1" Grid.Column="0" HorizontalTextAlignment="Start" FontSize="Subtitle" FontAttributes="Bold"/>
                 <Label x:Name="lblUventa"  Grid.Row="1" Grid.Column="1" HorizontalTextAlignment="Center"/>
                 <Label Text="Ventas Totales Hoy:" Grid.Row="2" Grid.Column="0" HorizontalTextAlignment="Start" FontSize="Subtitle" FontAttributes="Bold"/>
-                <Label Text="" Grid.Row="2" Grid.Column="1"/>
+                <Label x:Name="lblVhoy" Text="" Grid.Row="2" Grid.Column="1"/>
             </Grid>
         </StackLayout>
     </ContentPage.Content>
