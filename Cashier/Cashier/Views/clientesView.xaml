@@ -6,7 +6,7 @@
              >
     <ContentPage.Content>
         <StackLayout Margin="10">
-            <Label x:Name="txtIdCliente" />
+            <Label x:Name="txtIdCliente" IsVisible="false" />
             <Entry x:Name="txtNomCliente" Placeholder="Nombre del cliente"/>
             <Entry x:Name="txtApeCliente" Placeholder="Apellido del cliente"/>
             <Entry x:Name="txtCedCliente" Placeholder="Cedula del cliente" Keyboard="Numeric" MaxLength="10"/>

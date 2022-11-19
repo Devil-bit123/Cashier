@@ -4,8 +4,8 @@
              x:Class="Cashier.Master"
              Title="Master">
     <ContentPage.Content>
-        <StackLayout BackgroundColor="White" HorizontalOptions="Fill">
-            <Grid>
+        <StackLayout BackgroundColor="White" HorizontalOptions="CenterAndExpand">
+            <Grid HorizontalOptions="CenterAndExpand">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
@@ -15,9 +15,9 @@
                     <RowDefinition Height="*"/>                    
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>                   
+                    <ColumnDefinition Width="*"/>                      
                 </Grid.ColumnDefinitions>
-                    <Button Text="Caterogorias" x:Name="btnCategorias" Image="categories.png" BackgroundColor="White" Clicked="btnCategorias_Clicked" Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand"/>
+                    <Button Text="Categorias" x:Name="btnCategorias" Image="categories.png" BackgroundColor="White" Clicked="btnCategorias_Clicked" Grid.Row="0" Grid.Column="0"/>                    
                     <Button Text="Empresas" x:Name="btnEmpresas" Image="company.png" BackgroundColor="White" Clicked="btnEmpresas_Clicked" Grid.Row="1" Grid.Column="0"/>
                     <Button Text="Proveedores" x:Name="btnProveedores" Image="provider.png" BackgroundColor="White" Clicked="btnProveedores_Clicked" Grid.Row="2" Grid.Column="0"/>
                     <Button Text="Productos" x:Name="btnProductos" Image="products.png" BackgroundColor="White" Clicked="btnProductos_Clicked"  Grid.Row="3" Grid.Column="0"/>

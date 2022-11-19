@@ -21,6 +21,22 @@ namespace Cashier.Views
             llenarCV();
         }
 
+        protected async override void OnAppearing()
+        {
+            if (CVProvAct.SelectedItem != null)
+            {
+               CVProvAct.SelectedItem = null;
+            }
+
+            if (CVProvInac.SelectedItem != null)
+            {
+                CVProvInac.SelectedItem = null;
+            }
+            base.OnAppearing();
+
+        }
+
+
         #region funcionalidad
         private async void llenarPickerEmp()
         {

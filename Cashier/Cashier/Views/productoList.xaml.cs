@@ -23,9 +23,8 @@ namespace Cashier.Views
 
         protected async override void OnAppearing()
         {
-            CVprodA.SelectedItem = null;
-            
-            LLenarCV();
+
+            LLenarCV();               
             base.OnAppearing();
            
         }

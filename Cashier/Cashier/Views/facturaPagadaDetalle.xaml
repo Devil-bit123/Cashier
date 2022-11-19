@@ -4,7 +4,7 @@
              x:Class="Cashier.Views.facturaPagadaDetalle"
              Title="Detalle Completo">
     <ContentPage.Content>
-        <StackLayout Margin="10" Padding="2">
+        <StackLayout Margin="20" Padding="2">
             <StackLayout>
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Numero de Factura" FontSize="Subtitle" FontAttributes="Bold"/>

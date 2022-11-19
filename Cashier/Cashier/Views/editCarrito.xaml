@@ -4,8 +4,9 @@
              x:Class="Cashier.Views.editCarrito">
     <ContentPage.Content>
         <StackLayout Margin="10">
-            <Label x:Name="lblIDProd" Text="{Binding idDet}"  IsVisible="false"/>
+            <Label x:Name="lblIDdet" Text="{Binding idDet}"  IsVisible="false"/>
             <Label x:Name="lblNF" Text="{Binding numFac}" IsVisible="false"/>
+            <Label x:Name="Aexistencias" Text="{Binding cantidad}"/>
             <StackLayout>
                 <Grid>
                     <Grid.RowDefinitions>

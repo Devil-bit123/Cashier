@@ -18,7 +18,16 @@ namespace Cashier.Views
             InitializeComponent();
             llenarValores();
         }
-       
+
+        protected async override void OnAppearing()
+        {
+            if (CVFActuras.SelectedItem != null)
+            {
+                CVFActuras.SelectedItem = null;
+            }
+           
+
+        }
 
         #region funcoines
 

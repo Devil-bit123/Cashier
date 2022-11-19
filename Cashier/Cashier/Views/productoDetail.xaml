@@ -84,7 +84,7 @@
                                 <Button x:Name="btnNoFoto" Image="nocamera.png" Clicked="btnNoFoto_Clicked" BackgroundColor="White" />
                             </StackLayout>
                             <Label x:Name="txtIndFoto" Text="La foto se cargara atomaticamente despues de ser tomada, tenga paciencia."/>
-                            <Label x:Name="txtDirImagen" />
+                            <Label x:Name="txtDirImagen" IsVisible="false"/>
                             <StackLayout>
                                 <Grid VerticalOptions="Fill">
                                     <Image x:Name="image"/>

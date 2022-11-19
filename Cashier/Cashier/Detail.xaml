@@ -1,14 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
              x:Class="Cashier.Detail"
              >
     <ContentPage.Content>
         <StackLayout Padding="10" HorizontalOptions="Center">
+            <StackLayout>
             <Grid HorizontalOptions="Center" VerticalOptions="Center">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                   
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>
@@ -21,7 +24,17 @@
                 <Label x:Name="lblUventa"  Grid.Row="1" Grid.Column="1" HorizontalTextAlignment="Center"/>
                 <Label Text="Ventas Totales Hoy:" Grid.Row="2" Grid.Column="0" HorizontalTextAlignment="Start" FontSize="Subtitle" FontAttributes="Bold"/>
                 <Label x:Name="lblVhoy" Text="" Grid.Row="2" Grid.Column="1"/>
+                
             </Grid>
+                <Button x:Name="btnAnalisis" Image="analysis64.png" BackgroundColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center" Clicked="btnAnalisis_Clicked"/>
+            </StackLayout>
+            <StackLayout x:Name="ChartPannel" IsVisible="false">
+                <Label x:Name="PruebaA" IsVisible="false"/>
+                <Label x:Name="PruebaH" IsVisible="false"/>
+                <Label Text="Val. maximo de venta 100$*" FontSize="Micro"/>                
+                <microcharts:ChartView x:Name="BarChart" HeightRequest="300"/>
+                <Button x:Name="btnClose" Clicked="btnClose_Clicked" BackgroundColor="Transparent" Image="cancel.png"/>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -19,6 +19,22 @@ namespace Cashier.Views
             llenarCV();
             
         }
+
+        protected async override void OnAppearing()
+        {
+            if (CVEmpAct.SelectedItem != null)
+            {
+                CVEmpAct.SelectedItem = null;
+            }
+
+            if (CVEmpIact.SelectedItem != null)
+            {
+               CVEmpIact.SelectedItem = null;
+            }
+            base.OnAppearing();
+
+        }
+
         #region Validaciones
 
         private bool validarText()

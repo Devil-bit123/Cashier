@@ -19,6 +19,21 @@ namespace Cashier.Views
             llenarCV();
         }
 
+        protected async override void OnAppearing()
+        {
+            if (CVcategoriasA.SelectedItem!=null)
+            {
+                CVcategoriasA.SelectedItem = null;
+            }
+
+            if (CVcategoriasI.SelectedItem!=null)
+            {
+                CVcategoriasI.SelectedItem = null;
+            }            
+            base.OnAppearing();
+
+        }
+
         #region Validaciones
         private bool ValidarTXT()
         {
@@ -45,7 +60,7 @@ namespace Cashier.Views
             txtIdCat.Text = "";
             txtNomCat.Text = "";
             txtDesCat.Text = "";
-            pickEstadoCategoria.SelectedIndex = -1;
+            pickEstadoCategoria.SelectedIndex = -1;            
         }
 
         private async void llenarCV()
@@ -104,6 +119,7 @@ namespace Cashier.Views
                 btnGuardar.IsVisible = true;
                 llenarCV();
                 vaciarTXT();
+                
             }
 
         }

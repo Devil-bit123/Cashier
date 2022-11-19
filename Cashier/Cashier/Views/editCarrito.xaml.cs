@@ -20,41 +20,51 @@ namespace Cashier.Views
 
         private async void btnCobrar_Clicked(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(lblIDProd.Text))
+            int NC;
+            int AE;
+            int Dif;
+            int NE;
+
+            if (!string.IsNullOrEmpty(lblIDdet.Text))
             {
-                detFac detalle = new detFac
+                var prod = await App.SQLiteDB.recuperarProductoXNombreAsync(lblNom.Text);
+                if (prod!=null)
                 {
-                    idDet=Convert.ToInt32(lblIDProd.Text),
-                    numFac=lblNF.Text,
-                    nomProducto=lblNom.Text,
-                    preVentaProducto=Convert.ToDecimal(lblPVP.Text),
-                    cantidad=Convert.ToInt32(lblCant.Text),
-                    total=Convert.ToDecimal(lblTot.Text)
-                };
-                await App.SQLiteDB.editarDetallesAsync(detalle);               
-                var newStock = await App.SQLiteDB.recuperarProductoXNombreAsync(lblNom.Text);
-                if (newStock != null)
-                {
-                    int stockA = newStock.existProd;
-                    int ns=stockA+Convert.ToInt32(lblCant.Text);
-                    producto nstock = new producto
+                    AE = prod.existProd;
+                    NC = Convert.ToInt32(stpCant.Value);
+                    Dif = Convert.ToInt16(Aexistencias.Text) - NC;
+                    NE = AE + Dif;
+                    producto nuevoProd = new producto
                     {
-                        idProducto = newStock.idProducto,
-                        nomProducto = newStock.nomProducto,
-                        descProducto = newStock.descProducto,
-                        preCompraProd = newStock.preCompraProd,
-                        preVentaProd = newStock.preVentaProd,
-                        existProd = ns,
-                        idCategoria = newStock.idCategoria,
-                        idProveedor = newStock.idProveedor,
-                        barCodeProd = newStock.barCodeProd,
-                        imageProd = newStock.imageProd,
-                        estadoProd = newStock.estadoProd,
+                        idProducto = prod.idProducto,
+                        nomProducto=prod.nomProducto,
+                        descProducto=prod.descProducto,
+                        preCompraProd=prod.preCompraProd,
+                        preVentaProd=prod.preVentaProd,
+                        existProd=NE,
+                        idCategoria=prod.idCategoria,
+                        idProveedor=prod.idProveedor,
+                        barCodeProd=prod.barCodeProd,
+                        imageProd=prod.imageProd,
+                        estadoProd=prod.estadoProd
                     };
-                    await App.SQLiteDB.editarProductoAsync(nstock);
+                    var Nprod = await App.SQLiteDB.editarProductoAsync(nuevoProd);
+
+                    detFac det = new detFac
+                    {
+                        idDet = Convert.ToInt32(lblIDdet.Text),
+                        numFac= lblNF.Text,
+                        nomProducto = lblNom.Text,
+                        preVentaProducto=Convert.ToDecimal(lblPVP.Text),
+                        cantidad=Convert.ToInt32(lblCant.Text),
+                        total=Convert.ToDecimal(lblTot.Text)
+                    };
+                    var Ncarrito = await App.SQLiteDB.editarDetallesAsync(det);
+                    await DisplayAlert("OK!", "Producto editado", "OK");
+                    await this.Navigation.PopModalAsync();
+                   
                 }
-                await DisplayAlert("OK!", "Producto Editado", "OK");
-                await Navigation.PopModalAsync();
+                
             }
 
         }

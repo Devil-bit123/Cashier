@@ -48,6 +48,10 @@ namespace Cashier.Views
                     lblTotal.Text = acumulador.ToString();
                 }
             }
+            if (CVcarrito.SelectedItem!=null)
+            {
+                CVcarrito.SelectedItem = null;
+            }
             base.OnAppearing();
         }
         #region funciones
