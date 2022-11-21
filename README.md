@@ -148,3 +148,15 @@ si no posee fotos puede seleccionar la opcion no camara y se usara una foto alea
 <sub> Dieriamente tenemos una meta de ventas de 100$ podemos ver como la cumplimos, una vez tengamos datos aparecera automaticamente el botos de graficas, al presionarlos nos mostrara un grafico comparativo de nustras ventas de el dia de hoy y el dai anterior </sub>
 
 [![graficos.png](https://i.postimg.cc/BZwqyrrr/graficos.png)](https://postimg.cc/LhLKgb6D)
+
+### Errores ###
+1. es necesario tener un codigo de barras
+2. Digame
+
+### Paquetes Nugget ###
+[Microcharts](https://github.com/microcharts-dotnet/Microcharts).
+
+[SQLite](https://github.com/sqlite/sqlite).
+
+[ZXing](https://github.com/Redth/ZXing.Net.Mobile).
+
