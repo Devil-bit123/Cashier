@@ -1,5 +1,5 @@
 # Cashier
-Es una app para android creada con xamarin y SQLite; sirve para llevar un registro de productos proveedores y empresas, ademas cuenta con un nugget que permite scannear codigos de barras para los prodcutos; permite realizar la venta de productos. proximamente contara con graficas para analizis de ventas
+Es una app para android creada con xamarin y SQLite; sirve para llevar un registro de productos proveedores y empresas, cuenta con un nugget que permite scannear codigos de barras para los prodcutos; permite realizar la venta de productos. ademase cuenta con graficas para analizis de ventas y progreso de metas diarias
 
 ## Instalacion ##
 Puede clonar el repositorio o descargarlo
